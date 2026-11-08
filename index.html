@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Dearest Ishu 🥺💖</title>
+  
+  <!-- Google Fonts & Tailwind CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --font-display: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Nunito', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: radial-gradient(circle at 50% 20%, #ffe4e6 0%, #fed7aa 35%, #fbcfe8 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: var(--font-display);
+    }
+
+    /* Ambient Floating Particles */
+    .heart-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 0.65; }
+      80% { opacity: 0.65; }
+      100% {
+        transform: translateY(-10vh) scale(1.1) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Cat Realistic Animation Keyframes */
+    @keyframes earTwitch {
+      0%, 80%, 100% { transform: rotate(0deg); }
+      85% { transform: rotate(-5deg); }
+      90% { transform: rotate(4deg); }
+      95% { transform: rotate(-2deg); }
+    }
+
+    @keyframes gentleSway {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1.5deg); }
+    }
+
+    @keyframes happyDance {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-16px) rotate(-8deg) scale(1.04); }
+      75% { transform: translateY(-16px) rotate(8deg) scale(1.04); }
+    }
+
+    @keyframes heartShower {
+      0% { transform: translateY(-20px) scale(0.8); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(60px) scale(1.2); opacity: 0; }
+    }
+
+    @keyframes begPlead {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(8px) scale(0.97, 1.03); }
+    }
+
+    @keyframes kissPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08) translateX(4px); }
+    }
+
+    @keyframes faintRoll {
+      0% { transform: translateY(0) rotate(0deg); }
+      35% { transform: translateY(-25px) rotate(-15deg); }
+      70% { transform: translateY(35px) rotate(90deg); }
+      100% { transform: translateY(35px) rotate(90deg); }
+    }
+
+    @keyframes dizzySpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .anim-ear { animation: earTwitch 3.6s infinite ease-in-out; transform-origin: 50% 90%; }
+    .anim-sway { animation: gentleSway 2.4s infinite ease-in-out; }
+    .anim-dance { animation: happyDance 0.8s infinite ease-in-out; }
+    .anim-beg { animation: begPlead 1.1s infinite ease-in-out; }
+    .anim-kiss { animation: kissPulse 1.2s infinite ease-in-out; }
+    .anim-faint { animation: faintRoll 1.4s forwards cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .anim-dizzy { animation: dizzySpin 2s infinite linear; transform-origin: center; }
+
+    /* Sound Bars Animation */
+    @keyframes soundBar {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .bar-1 { animation: soundBar 0.8s ease-in-out infinite; }
+    .bar-2 { animation: soundBar 0.6s ease-in-out infinite 0.2s; }
+    .bar-3 { animation: soundBar 0.9s ease-in-out infinite 0.4s; }
+
+    /* Ultra Soft Glass Container */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px -15px rgba(244, 114, 182, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.85);
+    }
+
+    .coupon-card {
+      background: #ffffff;
+      border: 2px dashed #f472b6;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .coupon-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px -5px rgba(244, 114, 182, 0.3);
+    }
+    .coupon-card.claimed {
+      background: #fdf2f8;
+      border-color: #ec4899;
+      transform: scale(0.98);
+    }
+
+    #btn-runaway {
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 relative">
+
+  <!-- Ambient Floating Background Particles -->
+  <div id="ambient-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+
+  <!-- Music & Audio Controller -->
+  <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
+    <button id="sound-toggle" onclick="toggleAudio()" class="bg-white/95 hover:bg-white text-pink-600 font-bold px-3.5 py-2 rounded-full shadow-lg backdrop-blur flex items-center gap-2 text-xs sm:text-sm transition-all border border-pink-200 hover:scale-105 active:scale-95">
+      <div id="sound-bars" class="flex items-end gap-0.5 h-4 w-4 justify-center">
+        <span class="w-1 bg-pink-500 rounded-full bar-1"></span>
+        <span class="w-1 bg-pink-500 rounded-full bar-2"></span>
+        <span class="w-1 bg-pink-500 rounded-full bar-3"></span>
+      </div>
+      <span id="sound-icon">🎵</span>
+      <span id="sound-text">Music: ON</span>
+    </button>
+  </div>
+
+  <!-- Main Apology Card -->
+  <main class="w-full max-w-lg glass-card rounded-[2.5rem] p-6 sm:p-8 text-center relative z-10 transition-all duration-300">
+    
+    <!-- Stage Progress Indicator & Step Counter -->
+    <div class="flex items-center justify-between mb-1 px-1">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold tracking-wide">
+        <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+        <span id="stage-badge">Apology Mission for Ishu</span>
+      </div>
+      <span id="round-indicator" class="text-xs font-extrabold text-pink-400 bg-white/80 px-2.5 py-1 rounded-full border border-pink-100 shadow-sm">
+        Start
+      </span>
+    </div>
+
+    <!-- CUTE "YOUR DUMBO" BADGE DIRECTLY ON TOP OF THE CAT -->
+    <div class="flex justify-center mt-2 -mb-2 relative z-20">
+      <div class="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-100 via-rose-50 to-pink-100 border border-pink-300/80 text-pink-600 px-3.5 py-1 rounded-full text-xs sm:text-sm font-extrabold tracking-wide shadow-sm hover:scale-105 transition-all">
+        <span>🐾</span>
+        <span>Your Dumbo</span>
+        <span class="text-xs animate-pulse">🥺</span>
+      </div>
+    </div>
+
+    <!-- Mascot Frame -->
+    <div id="mascot-frame" class="w-60 h-60 mx-auto relative flex items-center justify-center my-2 filter drop-shadow-lg">
+      <!-- Mascot dynamically injected here -->
+    </div>
+
+    <!-- Dialogue Box -->
+    <h1 id="stage-title" class="text-2xl sm:text-3xl font-bold text-pink-600 mt-1 mb-2 leading-tight">
+      Hey Ishu... 🥺
+    </h1>
+
+    <div class="bg-gradient-to-b from-pink-50/90 to-rose-50/60 border border-pink-100/90 rounded-2xl p-4 my-2 shadow-inner">
+      <p id="stage-dialogue" class="text-gray-700 text-base sm:text-lg font-medium leading-relaxed">
+        Are you still angry with your dumbo?
+      </p>
+    </div>
+
+    <!-- Interactive Buttons Container -->
+    <div id="action-buttons-container" class="mt-4 min-h-[90px] flex items-center justify-center relative">
+      <!-- Buttons dynamically injected based on state -->
+    </div>
+
+    <p id="footer-hint" class="text-[11px] text-pink-400 mt-4 tracking-wider uppercase font-extrabold">
+      Made with 100% remorse & infinite love by your dumbo for Ishu 💌
+    </p>
+  </main>
+
+  <script>
+    /* =========================================================
+       1. POWERFUL & AUDIBLE LOUD MUSIC-BOX SOUND ENGINE
+       ========================================================= */
+    let audioCtx = null;
+    let masterGain = null;
+    let soundEnabled = true;
+    let bgmInterval = null;
+    let currentBeat = 0;
+
+    // Sweet Music Box Chord Progression: C -> G -> Am -> F
+    const bgmChords = [
+      { bass: 261.63, bellNotes: [523.25, 659.25, 783.99, 1046.50] }, // C major
+      { bass: 196.00, bellNotes: [493.88, 587.33, 783.99, 987.77] },  // G major
+      { bass: 220.00, bellNotes: [440.00, 523.25, 659.25, 880.00] },  // A minor
+      { bass: 174.61, bellNotes: [349.23, 440.00, 523.25, 698.46] }   // F major
+    ];
+
+    function ensureAudioReady() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.95, audioCtx.currentTime); // LOUD & crisp master volume
+        masterGain.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (!bgmInterval && soundEnabled) {
+        startCuteLullabyLoop();
+      }
+    }
+
+    function startCuteLullabyLoop() {
+      if (bgmInterval) clearInterval(bgmInterval);
+      
+      // Loops sweet romantic notes every 320ms
+      bgmInterval = setInterval(() => {
+        if (!soundEnabled || !audioCtx || audioCtx.state === 'suspended') return;
+
+        const chordIndex = Math.floor((currentBeat % 16) / 4);
+        const chord = bgmChords[chordIndex];
+        const stepInChord = currentBeat % 4;
+
+        // Rich, audible acoustic bass note on beat 1
+        if (stepInChord === 0) {
+          playMusicBoxTone(chord.bass, 0.70, 0.55, 'triangle');
+        }
+
+        // Louder, vibrant chime notes with triangle acoustic harmonics
+        const note = chord.bellNotes[stepInChord];
+        playMusicBoxTone(note, 0.50, 0.50, 'triangle');
+
+        currentBeat++;
+      }, 320);
+    }
+
+    function playMusicBoxTone(freq, duration = 0.45, vol = 0.5, type = 'triangle') {
+      if (!audioCtx || !soundEnabled) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const noteGain = audioCtx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        // Music Box Pluck Envelope
+        noteGain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+        osc.connect(noteGain);
+        noteGain.connect(masterGain);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleAudio() {
+      ensureAudioReady();
+      soundEnabled = !soundEnabled;
+
+      const icon = document.getElementById('sound-icon');
+      const text = document.getElementById('sound-text');
+      const bars = document.getElementById('sound-bars');
+
+      if (soundEnabled) {
+        if (masterGain) masterGain.gain.setValueAtTime(0.95, audioCtx.currentTime);
+        icon.textContent = "🎵";
+        text.textContent = "Music: ON";
+        bars.classList.remove('opacity-20');
+        if (!bgmInterval) startCuteLullabyLoop();
+      } else {
+        if (masterGain) masterGain.gain.setValueAtTime(0.00001, audioCtx.currentTime);
+        icon.textContent = "🔇";
+        text.textContent = "Music: OFF";
+        bars.classList.add('opacity-20');
+      }
+    }
+
+    /* Sound Effects */
+    function playTone(freq, duration = 0.15, type = 'sine', gainVal = 0.35) {
+      if (!soundEnabled) return;
+      ensureAudioReady();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playKissSound() {
+      if (!soundEnabled) return;
+      ensureAudioReady();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(750, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.14);
+        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.16);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.16);
+      } catch(e) {}
+    }
+
+    function playFaintThud() {
+      if (!soundEnabled) return;
+      ensureAudioReady();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(280, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(70, audioCtx.currentTime + 0.35);
+        gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.35);
+      } catch(e) {}
+    }
+
+    function playBoing() {
+      if (!soundEnabled) return;
+      ensureAudioReady();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(840, audioCtx.currentTime + 0.22);
+        gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.22);
+      } catch(e) {}
+    }
+
+    function playVictoryFanfare() {
+      if (!soundEnabled) return;
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+      notes.forEach((freq, index) => {
+        setTimeout(() => playTone(freq, 0.4, 'triangle', 0.35), index * 105);
+      });
+    }
+
+    /* =========================================================
+       2. FLYING EMOJIS BURST ENGINE (FLIES OUT ACROSS SCREEN)
+       ========================================================= */
+    function burstFlyingEmojis(emojiList, event, count = 35) {
+      let originX = window.innerWidth / 2;
+      let originY = window.innerHeight / 2;
+
+      if (event && event.currentTarget) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        originX = rect.left + rect.width / 2;
+        originY = rect.top + rect.height / 2;
+      }
+
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'fixed pointer-events-none select-none z-50 text-2xl sm:text-4xl';
+        el.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+        el.style.left = `${originX}px`;
+        el.style.top = `${originY}px`;
+        document.body.appendChild(el);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 280 + 100;
+        const destX = Math.cos(angle) * distance;
+        const destY = Math.sin(angle) * distance - (Math.random() * 70 + 30);
+        const rot = (Math.random() - 0.5) * 720;
+        const duration = Math.random() * 600 + 1100;
+
+        const anim = el.animate([
+          { transform: 'translate(-50%, -50%) scale(0.3) rotate(0deg)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${destX * 0.45}px), calc(-50% + ${destY * 0.45}px)) scale(1.4) rotate(${rot * 0.5}deg)`, opacity: 1, offset: 0.45 },
+          { transform: `translate(calc(-50% + ${destX}px), calc(-50% + ${destY + 50}px)) scale(0.85) rotate(${rot}deg)`, opacity: 0 }
+        ], {
+          duration: duration,
+          easing: 'cubic-bezier(0.16, 0.88, 0.32, 1.25)',
+          fill: 'forwards'
+        });
+
+        anim.onfinish = () => el.remove();
+      }
+    }
+
+    function initAmbientParticles() {
+      const container = document.getElementById('ambient-container');
+      const emojis = ['💖', '🌸', '✨', '💕', '🍦', '🧁', '💋', '🎵', '👑'];
+      for (let i = 0; i < 22; i++) {
+        const span = document.createElement('span');
+        span.className = 'heart-particle';
+        span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDelay = (Math.random() * 8) + 's';
+        span.style.fontSize = (Math.random() * 18 + 14) + 'px';
+        container.appendChild(span);
+      }
+    }
+
+    /* =========================================================
+       3. REALISTIC CARTOON MALE HELLO KITTY SVG (NO CAP)
+       ========================================================= */
+    function getCleanMaleKitty(action) {
+      const defs = `
+        <defs>
+          <radialGradient id="rkHeadGrad" cx="38%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="70%" stop-color="#f8fafc"/>
+            <stop offset="88%" stop-color="#e2e8f0"/>
+            <stop offset="100%" stop-color="#cbd5e1"/>
+          </radialGradient>
+
+          <linearGradient id="rkEarPink" x1="0" y1="0" x2="0.6" y2="1">
+            <stop offset="0%" stop-color="#fbcfe8"/>
+            <stop offset="60%" stop-color="#f472b6"/>
+            <stop offset="100%" stop-color="#db2777"/>
+          </linearGradient>
+
+          <linearGradient id="rkHoodieGrad" x1="0.2" y1="0" x2="0.8" y2="1">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="40%" stop-color="#2563eb"/>
+            <stop offset="85%" stop-color="#1d4ed8"/>
+            <stop offset="100%" stop-color="#1e3a8a"/>
+          </linearGradient>
+
+          <linearGradient id="rkBowGrad" x1="0" y1="0" x2="0.2" y2="1">
+            <stop offset="0%" stop-color="#93c5fd"/>
+            <stop offset="50%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#1d4ed8"/>
+          </linearGradient>
+
+          <radialGradient id="rkEyeGrad" cx="40%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#334155"/>
+            <stop offset="70%" stop-color="#0f172a"/>
+            <stop offset="100%" stop-color="#020617"/>
+          </radialGradient>
+
+          <radialGradient id="rkBlush" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f472b6" stop-opacity="0.55"/>
+            <stop offset="70%" stop-color="#fb7185" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
+          </radialGradient>
+
+          <filter id="rkSoftShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.16"/>
+          </filter>
+        </defs>
+      `;
+
+      const hoodieBody = `
+        <g id="clean-hoodie-body">
+          <path d="M 94,188 C 88,210 86,244 88,266 C 114,274 186,274 212,266 C 214,244 212,210 206,188 Z" fill="url(#rkHoodieGrad)"/>
+          <path d="M 114,228 C 132,224 168,224 186,228 C 191,248 189,258 186,263 C 160,267 140,267 114,263 C 111,258 109,248 114,228 Z" fill="#1e40af" stroke="#1d4ed8" stroke-width="1.5"/>
+          <path d="M 134,196 C 133,218 128,228 130,242" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="128" y="241" width="4.5" height="8" rx="2" fill="#cbd5e1"/>
+          <path d="M 166,196 C 167,218 172,228 170,242" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="168" y="241" width="4.5" height="8" rx="2" fill="#cbd5e1"/>
+          <path d="M 98,188 C 124,204 176,204 202,188 C 194,180 106,180 98,188 Z" fill="#2563eb"/>
+          <g transform="translate(150, 195)">
+            <path d="M 0,0 L -18,-11 L -18,11 Z" fill="url(#rkBowGrad)" stroke="#1d4ed8" stroke-width="1.5"/>
+            <path d="M 0,0 L 18,-11 L 18,11 Z" fill="url(#rkBowGrad)" stroke="#1d4ed8" stroke-width="1.5"/>
+            <ellipse cx="0" cy="0" rx="5.5" ry="6.5" fill="#1e40af" stroke="#2563eb" stroke-width="1"/>
+          </g>
+        </g>
+      `;
+
+      const baseHead = (eyeStyle = "normal") => `
+        <g id="pure-kitty-head">
+          <g class="anim-ear">
+            <path d="M 96,86 L 68,30 C 63,22 74,12 85,18 L 124,50 Z" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="3.5" stroke-linejoin="round"/>
+            <polygon points="76,30 90,62 112,47" fill="url(#rkEarPink)"/>
+            <path d="M 80,48 Q 88,43 90,36 Q 94,50 100,44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </g>
+          
+          <g class="anim-ear" style="transform-origin: 204px 86px;">
+            <path d="M 204,86 L 232,30 C 237,22 226,12 215,18 L 176,50 Z" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="3.5" stroke-linejoin="round"/>
+            <polygon points="224,30 210,62 188,47" fill="url(#rkEarPink)"/>
+            <path d="M 220,48 Q 212,43 210,36 Q 206,50 200,44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </g>
+
+          <ellipse cx="150" cy="138" rx="68" ry="54" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="3.5" filter="drop-shadow(0 6px 10px rgba(15, 23, 42, 0.12))"/>
+
+          <ellipse cx="102" cy="154" rx="13" ry="8" fill="url(#rkBlush)"/>
+          <ellipse cx="198" cy="154" rx="13" ry="8" fill="url(#rkBlush)"/>
+
+          <g stroke="#334155" stroke-width="3" stroke-linecap="round">
+            <line x1="70" y1="134" x2="94" y2="137" />
+            <line x1="66" y1="146" x2="93" y2="146" />
+            <line x1="70" y1="158" x2="94" y2="153" />
+            <line x1="230" y1="134" x2="206" y2="137" />
+            <line x1="234" y1="146" x2="207" y2="146" />
+            <line x1="230" y1="158" x2="206" y2="153" />
+          </g>
+
+          <ellipse cx="150" cy="148" rx="7" ry="4.8" fill="#facc15" stroke="#78350f" stroke-width="2"/>
+          <ellipse cx="148" cy="146.5" rx="3.2" ry="1.6" fill="#fef08a"/>
+
+          ${eyeStyle === "puppy" ? `
+            <ellipse cx="118" cy="138" rx="12" ry="15" fill="url(#rkEyeGrad)"/>
+            <ellipse cx="182" cy="138" rx="12" ry="15" fill="url(#rkEyeGrad)"/>
+            <circle cx="114" cy="132" r="5" fill="#ffffff"/>
+            <circle cx="122" cy="143" r="2.5" fill="#ffffff"/>
+            <circle cx="114" cy="145" r="1.3" fill="#93c5fd"/>
+            <circle cx="178" cy="132" r="5" fill="#ffffff"/>
+            <circle cx="186" cy="143" r="2.5" fill="#ffffff"/>
+            <circle cx="178" cy="145" r="1.3" fill="#93c5fd"/>
+            <path d="M 108,121 Q 118,127 128,122" stroke="#334155" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <path d="M 192,121 Q 182,127 172,122" stroke="#334155" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          ` : eyeStyle === "happy" ? `
+            <path d="M 110,141 Q 118,130 126,141" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <path d="M 174,141 Q 182,130 190,141" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <path d="M 143,159 Q 150,169 157,159" stroke="#334155" stroke-width="2.8" stroke-linecap="round" fill="#f43f5e"/>
+          ` : eyeStyle === "kiss" ? `
+            <path d="M 110,142 Q 118,134 126,142" stroke="#1e293b" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M 174,142 Q 182,134 190,142" stroke="#1e293b" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <ellipse cx="150" cy="162" rx="4" ry="5.5" fill="#e11d48" stroke="#334155" stroke-width="2"/>
+          ` : eyeStyle === "dizzy" ? `
+            <g class="anim-dizzy" style="transform-origin: 118px 140px;">
+              <path d="M 118,140 m -8,0 a 8,8 0 1,0 16,0 a 5,5 0 1,0 -10,0 a 2,2 0 1,0 4,0" stroke="#334155" stroke-width="2.5" fill="none"/>
+            </g>
+            <g class="anim-dizzy" style="transform-origin: 182px 140px;">
+              <path d="M 182,140 m -8,0 a 8,8 0 1,0 16,0 a 5,5 0 1,0 -10,0 a 2,2 0 1,0 4,0" stroke="#334155" stroke-width="2.5" fill="none"/>
+            </g>
+            <ellipse cx="150" cy="162" rx="6" ry="8" fill="#334155"/>
+          ` : `
+            <ellipse cx="118" cy="140" rx="5.5" ry="8" fill="url(#rkEyeGrad)"/>
+            <ellipse cx="182" cy="140" rx="5.5" ry="8" fill="url(#rkEyeGrad)"/>
+            <circle cx="116" cy="137" r="2.2" fill="#ffffff"/>
+            <circle cx="180" cy="137" r="2.2" fill="#ffffff"/>
+          `}
+        </g>
+      `;
+
+      switch (action) {
+        case 'dance':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-dance" filter="url(#rkSoftShadow)">
+              ${defs}
+              <text x="35" y="70" font-size="28">💃</text>
+              <text x="235" y="75" font-size="28">✨</text>
+              <text x="30" y="210" font-size="24">🎵</text>
+              <text x="240" y="210" font-size="24">🎶</text>
+              ${hoodieBody}
+              <ellipse cx="78" cy="180" rx="11" ry="9" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="222" cy="180" rx="11" ry="9" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              ${baseHead("happy")}
+            </svg>
+          `;
+
+        case 'rain_hearts':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-sway" filter="url(#rkSoftShadow)">
+              ${defs}
+              <g style="animation: heartShower 1.8s infinite ease-in-out;">
+                <text x="50" y="50" font-size="26">💖</text>
+                <text x="140" y="35" font-size="32">💕</text>
+                <text x="220" y="55" font-size="28">💘</text>
+              </g>
+              <g style="animation: heartShower 1.8s infinite ease-in-out; animation-delay: 0.9s;">
+                <text x="80" y="60" font-size="28">💗</text>
+                <text x="180" y="45" font-size="30">💓</text>
+              </g>
+              ${hoodieBody}
+              <ellipse cx="90" cy="172" rx="11" ry="10" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="210" cy="172" rx="11" ry="10" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              ${baseHead("happy")}
+            </svg>
+          `;
+
+        case 'puppy_eye':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-sway" filter="url(#rkSoftShadow)">
+              ${defs}
+              ${hoodieBody}
+              <ellipse cx="128" cy="196" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="172" cy="196" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              ${baseHead("puppy")}
+            </svg>
+          `;
+
+        case 'beg_on_knees':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-beg" filter="url(#rkSoftShadow)">
+              ${defs}
+              <ellipse cx="150" cy="256" rx="65" ry="24" fill="url(#rkHoodieGrad)"/>
+              <path d="M 100,192 C 94,215 94,245 98,260 C 122,266 178,266 202,260 C 206,245 206,215 200,192 Z" fill="url(#rkHoodieGrad)"/>
+              <g transform="translate(150, 196)">
+                <path d="M 0,0 L -18,-11 L -18,11 Z" fill="url(#rkBowGrad)" stroke="#1d4ed8" stroke-width="1.5"/>
+                <path d="M 0,0 L 18,-11 L 18,11 Z" fill="url(#rkBowGrad)" stroke="#1d4ed8" stroke-width="1.5"/>
+                <ellipse cx="0" cy="0" rx="5.5" ry="6.5" fill="#1e40af"/>
+              </g>
+              <ellipse cx="143" cy="200" rx="10" ry="12" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="157" cy="200" rx="10" ry="12" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              ${baseHead("puppy")}
+            </svg>
+          `;
+
+        case 'kiss':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-kiss" filter="url(#rkSoftShadow)">
+              ${defs}
+              <g transform="translate(190, 100)">
+                <path d="M 16,22 C 16,10 0,6 0,22 C 0,34 16,44 16,44 C 16,44 32,34 32,22 C 32,6 16,10 16,22 Z" fill="#f43f5e" stroke="#be123c" stroke-width="2" class="animate-bounce"/>
+                <text x="35" y="30" font-size="20">💋</text>
+              </g>
+              ${hoodieBody}
+              <ellipse cx="122" cy="198" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2"/>
+              <ellipse cx="178" cy="198" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2"/>
+              ${baseHead("kiss")}
+            </svg>
+          `;
+
+        case 'give_icecream':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-sway" filter="url(#rkSoftShadow)">
+              ${defs}
+              ${hoodieBody}
+              ${baseHead("happy")}
+              <g transform="translate(122, 168)">
+                <polygon points="18,36 38,36 28,68" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
+                <circle cx="28" cy="27" r="16" fill="#fbcfe8" stroke="#db2777" stroke-width="2"/>
+                <circle cx="28" cy="14" r="13" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+                <circle cx="28" cy="2" r="5" fill="#ef4444"/>
+                <ellipse cx="12" cy="42" rx="9" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2"/>
+                <ellipse cx="44" cy="42" rx="9" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2"/>
+              </g>
+            </svg>
+          `;
+
+        case 'magnifying_glass':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-sway" filter="url(#rkSoftShadow)">
+              ${defs}
+              ${hoodieBody}
+              ${baseHead("normal")}
+              <g transform="translate(160, 126)">
+                <circle cx="22" cy="18" r="28" fill="#67e8f9" fill-opacity="0.32" stroke="#f59e0b" stroke-width="6"/>
+                <circle cx="18" cy="14" r="24" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+                <line x1="42" y1="38" x2="72" y2="68" stroke="#78350f" stroke-width="9" stroke-linecap="round"/>
+                <line x1="44" y1="40" x2="70" y2="66" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="22" cy="18" rx="12" ry="16" fill="url(#rkEyeGrad)"/>
+                <circle cx="18" cy="12" r="4" fill="#ffffff"/>
+              </g>
+            </svg>
+          `;
+
+        case 'faint':
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-faint" filter="url(#rkSoftShadow)">
+              ${defs}
+              <text x="50" y="70" font-size="24">💫</text>
+              <text x="210" y="70" font-size="24">⭐</text>
+              <text x="135" y="45" font-size="24">💫</text>
+              ${hoodieBody}
+              <ellipse cx="94" cy="178" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="206" cy="178" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              ${baseHead("dizzy")}
+            </svg>
+          `;
+
+        case 'initial_shy':
+        default:
+          return `
+            <svg viewBox="0 0 300 300" class="w-full h-full anim-sway" filter="url(#rkSoftShadow)">
+              ${defs}
+              ${hoodieBody}
+              <ellipse cx="106" cy="198" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <ellipse cx="194" cy="198" rx="10" ry="8" fill="url(#rkHeadGrad)" stroke="#334155" stroke-width="2.5"/>
+              <rect x="146" y="196" width="8" height="66" rx="3" fill="#b45309" stroke="#78350f" stroke-width="1.8"/>
+              <g transform="translate(68, 184) rotate(-3)">
+                <rect x="0" y="0" width="164" height="48" rx="12" fill="#fff1f2" stroke="#fb7185" stroke-width="2.5"/>
+                <text x="82" y="30" text-anchor="middle" font-family="'Fredoka', cursive" font-size="16" font-weight="700" fill="#e11d48">For Ishu 💖</text>
+              </g>
+              ${baseHead("normal")}
+            </svg>
+          `;
+      }
+    }
+
+    /* =========================================================
+       4. GAMEPLAY FLOW: 6 ROUNDS FOR BOTH YES & NO
+       ========================================================= */
+    const stages = {
+      INITIAL: 'initial',
+      
+      // BRANCH A (YES Loop)
+      A1_DANCE: 'a1_dance',         
+      A2_ICECREAM: 'a2_icecream',   
+      A3_PUPPY: 'a3_puppy',         
+      A4_BEG: 'a4_beg',             
+      A5_FAINT: 'a5_faint',         
+      A6_KISS: 'a6_kiss',           
+      
+      // BRANCH B (NO Loop)
+      B1_GLASS: 'b1_glass',         
+      B2_PUPPY: 'b2_puppy',         
+      B3_ICECREAM: 'b3_icecream',   
+      B4_DANCE: 'b4_dance',         
+      B5_KISS: 'b5_kiss',           
+      B6_RAIN: 'b6_rain',           
+
+      // FINALE
+      FINALE: 'finale'
+    };
+
+    let runawayCount = 0;
+
+    function renderStage(stageKey) {
+      const mascotFrame = document.getElementById('mascot-frame');
+      const titleEl = document.getElementById('stage-title');
+      const dialogueEl = document.getElementById('stage-dialogue');
+      const btnContainer = document.getElementById('action-buttons-container');
+      const badgeEl = document.getElementById('stage-badge');
+      const roundInd = document.getElementById('round-indicator');
+
+      btnContainer.innerHTML = '';
+
+      switch (stageKey) {
+        case stages.INITIAL:
+          roundInd.textContent = "Start";
+          badgeEl.textContent = "Apology Mission";
+          mascotFrame.innerHTML = getCleanMaleKitty('initial_shy');
+          titleEl.textContent = "Hey Ishu... 🥺";
+          dialogueEl.textContent = "Are you still angry with your dumbo?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-4 w-full">
+              <button onclick="handleTransition('${stages.A1_DANCE}')" class="px-7 py-3 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-lg shadow-md hover:-translate-y-0.5 transition-all active:scale-95">
+                Yes 😤
+              </button>
+              <button onclick="handleTransition('${stages.B1_GLASS}')" class="px-7 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-display text-lg shadow-md hover:-translate-y-0.5 transition-all active:scale-95">
+                No 😸
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A1_DANCE:
+          roundInd.textContent = "Round 1/6";
+          badgeEl.textContent = "Action: Dance 💃";
+          playTone(480, 0.2, 'triangle');
+          mascotFrame.innerHTML = getCleanMaleKitty('dance');
+          titleEl.textContent = "Wait, Ishu! Don't be mad! 💃✨";
+          dialogueEl.textContent = "Look at your dumbo doing a happy little kitty dance just to make you smile... Did that help even 1%?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.A2_ICECREAM}')" class="px-5 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-sm sm:text-base shadow-sm">
+                Still angry 😤
+              </button>
+              <button onclick="handleTransition('${stages.A2_ICECREAM}')" class="px-5 py-2.5 rounded-2xl bg-pink-400 hover:bg-pink-500 text-white font-display text-sm sm:text-base shadow-sm">
+                Maybe a tiny smile 🥺
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A2_ICECREAM:
+          roundInd.textContent = "Round 2/6";
+          badgeEl.textContent = "Action: Give Ice Cream 🍦";
+          playTone(523.25, 0.2, 'sine');
+          mascotFrame.innerHTML = getCleanMaleKitty('give_icecream');
+          titleEl.textContent = "Sweet peace offering for Ishu! 🍦";
+          dialogueEl.textContent = "Double-scoop waffle cone prepared by your dumbo specially for his favorite girl! Can Ishu forgive me for some ice cream?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.A3_PUPPY}')" class="px-5 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-sm sm:text-base shadow-sm">
+                Nope, try harder! 🙅‍♀️
+              </button>
+              <button onclick="handleTransition('${stages.FINALE}')" class="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-display text-sm sm:text-base shadow-md">
+                Accept Ice Cream 🍨
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A3_PUPPY:
+          roundInd.textContent = "Round 3/6";
+          badgeEl.textContent = "Action: Puppy Eye 🥺";
+          playTone(380, 0.25, 'sine');
+          mascotFrame.innerHTML = getCleanMaleKitty('puppy_eye');
+          titleEl.textContent = "Please, Ishu? Look at this face... 🥺";
+          dialogueEl.textContent = "Your dumbo is activating maximum glossy puppy-dog eyes! How could anyone stay mad at this cute face looking straight at you?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.A4_BEG}')" class="px-5 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-sm sm:text-base shadow-sm">
+                Still resisting! 😤
+              </button>
+              <button onclick="handleTransition('${stages.A4_BEG}')" class="px-5 py-2.5 rounded-2xl bg-pink-400 hover:bg-pink-500 text-white font-display text-sm sm:text-base shadow-sm">
+                Aww stop it... 🥹
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A4_BEG:
+          roundInd.textContent = "Round 4/6";
+          badgeEl.textContent = "Action: Beg on Knees 🙇‍♂️";
+          playTone(330, 0.25, 'triangle');
+          mascotFrame.innerHTML = getCleanMaleKitty('beg_on_knees');
+          titleEl.textContent = "Literally on my knees begging! 🙇‍♂️";
+          dialogueEl.textContent = "Your dumbo is down on his knees, tiny paws clasped together pleading with 100% genuine remorse! Please forgive your dumbo, Ishu!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.A5_FAINT}')" class="px-5 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-sm sm:text-base shadow-sm">
+                Still mad! 😤
+              </button>
+              <button onclick="handleTransition('${stages.FINALE}')" class="px-6 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-display text-sm sm:text-base shadow-md">
+                Okay stand up, forgiven! 🫂
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A5_FAINT:
+          roundInd.textContent = "Round 5/6";
+          badgeEl.textContent = "Action: Faint 😵";
+          playFaintThud();
+          mascotFrame.innerHTML = getCleanMaleKitty('faint');
+          titleEl.textContent = "*THUD* Emotional Overload! 😵💫";
+          dialogueEl.textContent = "Your dumbo couldn't handle Ishu being angry anymore and fainted flat on the floor! Only Ishu's kiss can revive your dumbo!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.A6_KISS}')" class="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-display text-sm sm:text-base shadow-md hover:scale-105 transition-all">
+                Revive Your Dumbo 💖
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.A6_KISS:
+          roundInd.textContent = "Round 6/6";
+          badgeEl.textContent = "Action: Kiss 💋";
+          playKissSound();
+          mascotFrame.innerHTML = getCleanMaleKitty('kiss');
+          titleEl.textContent = "MWAH! An Apology Kiss! 💋✨";
+          dialogueEl.textContent = "Revived by Ishu! Sending a gigantic floating apology kiss straight to your forehead! Now you HAVE to smile at your dumbo!";
+
+          btnContainer.innerHTML = `
+            <div class="relative w-full flex items-center justify-center min-h-[85px] overflow-visible">
+              <button id="btn-runaway" onmouseenter="dodgeAngryButton()" onclick="dodgeAngryButton()" class="px-3.5 py-2 bg-rose-500 text-white font-display text-xs sm:text-sm rounded-xl shadow-sm z-30 transition-all cursor-pointer">
+                Still Angry 😤
+              </button>
+              <button id="btn-growing-forgive" onclick="handleTransition('${stages.FINALE}')" class="ml-4 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-display text-base sm:text-lg rounded-2xl shadow-xl transition-all animate-pulse">
+                I Forgive You! 🥰
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B1_GLASS:
+          roundInd.textContent = "Round 1/6";
+          badgeEl.textContent = "Action: Magnifying Glass 🔍";
+          playTone(550, 0.15, 'sawtooth');
+          mascotFrame.innerHTML = getCleanMaleKitty('magnifying_glass');
+          titleEl.textContent = "Wait... really, Ishu?? 👀";
+          dialogueEl.textContent = "Detective Dumbo brings out the magnifying glass! Inspecting suspiciously... Are you 100% sure you're not just saying that to be nice to your dumbo?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.B2_PUPPY}')" class="px-6 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-display text-sm sm:text-base shadow-md">
+                100% Not Angry! 🥰
+              </button>
+              <button onclick="handleTransition('${stages.A1_DANCE}')" class="px-5 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-display text-sm sm:text-base shadow-sm">
+                Actually, maybe 1% angry 🤫
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B2_PUPPY:
+          roundInd.textContent = "Round 2/6";
+          badgeEl.textContent = "Action: Puppy Eye 🥺";
+          playTone(440, 0.2, 'sine');
+          mascotFrame.innerHTML = getCleanMaleKitty('puppy_eye');
+          titleEl.textContent = "Look into my puppy eyes & swear! 🥺";
+          dialogueEl.textContent = "If Ishu is truly not mad, look deep into your dumbo's sparkling eyes and confirm you really love me!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.B3_ICECREAM}')" class="px-6 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-display text-sm sm:text-base shadow-md">
+                I swear I love my dumbo! 🥰
+              </button>
+              <button onclick="handleTransition('${stages.B3_ICECREAM}')" class="px-5 py-2.5 rounded-2xl bg-pink-400 hover:bg-pink-500 text-white font-display text-sm sm:text-base shadow-sm">
+                Don't look at me like that 🙈
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B3_ICECREAM:
+          roundInd.textContent = "Round 3/6";
+          badgeEl.textContent = "Action: Give Ice Cream 🍦";
+          playTone(523.25, 0.2, 'sine');
+          mascotFrame.innerHTML = getCleanMaleKitty('give_icecream');
+          titleEl.textContent = "Reward for the sweetest girlfriend! 🍦";
+          dialogueEl.textContent = "Since Ishu is so sweet, here is delicious double-scoop ice cream from your dumbo! A treat for the best girl in the world!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.B4_DANCE}')" class="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-display text-sm sm:text-base shadow-md">
+                Yummy! Thank you dumbo! 😋
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B4_DANCE:
+          roundInd.textContent = "Round 4/6";
+          badgeEl.textContent = "Action: Dance 💃";
+          playTone(660, 0.2, 'triangle');
+          mascotFrame.innerHTML = getCleanMaleKitty('dance');
+          titleEl.textContent = "Celebration Victory Dance! 💃✨";
+          dialogueEl.textContent = "Your dumbo knew it! Look at my happy wiggles! Ishu really is an angel sent from above! Time to celebrate!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.B5_KISS}')" class="px-6 py-2.5 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-display text-sm sm:text-base shadow-md">
+                You're so cute 😂
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B5_KISS:
+          roundInd.textContent = "Round 5/6";
+          badgeEl.textContent = "Action: Kiss 💋";
+          playKissSound();
+          mascotFrame.innerHTML = getCleanMaleKitty('kiss');
+          titleEl.textContent = "MWAH! A Sweet Kiss for Ishu! 💋";
+          dialogueEl.textContent = "A huge thank-you kiss right on your cheek from your dumbo! You make every day 1000x brighter, Ishu!";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.B6_RAIN}')" class="px-6 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white font-display text-sm sm:text-base shadow-md">
+                Receive Kiss 💕
+              </button>
+            </div>
+          `;
+          break;
+
+        case stages.B6_RAIN:
+          roundInd.textContent = "Round 6/6";
+          badgeEl.textContent = "Action: Rain Hearts 💖";
+          playTone(784, 0.3, 'sine');
+          mascotFrame.innerHTML = getCleanMaleKitty('rain_hearts');
+          titleEl.textContent = "Look! It's Raining Hearts! 🌧️💖";
+          dialogueEl.textContent = "The whole sky is showering pink hearts because Ishu and her dumbo are officially in peace & in love! Ready for your surprise?";
+
+          btnContainer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <button onclick="handleTransition('${stages.FINALE}')" class="px-8 py-3 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500 hover:scale-105 text-white font-display text-base sm:text-lg shadow-xl">
+                Open Apology Treat Box 🎁✨
+              </button>
+            </div>
+          `;
+          break;
+
+        /* =========================================================
+           GRAND FINALE WITH FLYING EMOJIS & CUSTOM WISH PASS
+           ========================================================= */
+        case stages.FINALE:
+          roundInd.textContent = "Peace! 💖";
+          badgeEl.textContent = "🎉 Official Peace Treaty";
+          playVictoryFanfare();
+          triggerConfettiBurst();
+          mascotFrame.innerHTML = getCleanMaleKitty('dance');
+          titleEl.textContent = "YAY! Ishu & Her Dumbo Forever! 🥳💖";
+          dialogueEl.innerHTML = `
+            <span class="block text-pink-600 font-bold mb-1">Thank you for forgiving me, Ishu!</span>
+            <span class="text-gray-700">Your dumbo loves you so much! Tap each coupon to claim your treats & wishes:</span>
+          `;
+
+          btnContainer.innerHTML = `
+            <div class="w-full flex flex-col gap-2.5 text-left my-1">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <!-- 1. LOTS OF KISSES COUPON -->
+                <div class="coupon-card p-2.5 rounded-2xl cursor-pointer" onclick="claimCoupon(this, ['💋', '😘', '💖', '💕', '💄', '😽', '❤️', '💋'], event)">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xl">💋</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-gray-800">1x Lots of Kisses & Pecks</h4>
+                      <p class="text-[11px] text-pink-500 font-semibold claim-status">Tap to Claim Kisses! 💋</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. UNLIMITED ICE CREAM -->
+                <div class="coupon-card p-2.5 rounded-2xl cursor-pointer" onclick="claimCoupon(this, ['🍦', '🍨', '🍧', '🍰', '🧁', '🍒', '🍓', '🍦'], event)">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xl">🍦</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-gray-800">1x Unlimited Ice Cream</h4>
+                      <p class="text-[11px] text-pink-500 font-semibold claim-status">Tap to Claim! 🍨</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. CUDDLES & BACK RUBS -->
+                <div class="coupon-card p-2.5 rounded-2xl cursor-pointer" onclick="claimCoupon(this, ['💆‍♀️', '🫂', '🧸', '✨', '🌸', '💖', '🥰', '💆‍♂️'], event)">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xl">💆‍♀️</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-gray-800">1x Cuddles & Back Rubs</h4>
+                      <p class="text-[11px] text-pink-500 font-semibold claim-status">Tap to Claim! 🧸</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. "WHATEVER ISHU WANTS" PASS (REPLACED MOVIE NIGHT) -->
+                <div class="coupon-card p-2.5 rounded-2xl cursor-pointer" onclick="claimCoupon(this, ['👑', '✨', '🎁', '💖', '🪄', '⭐', '🥰', '👑'], event)">
+                  <div class="flex items-center gap-2">
+                    <span class="text-2xl">👑</span>
+                    <div>
+                      <h4 class="font-bold text-xs text-gray-800">1x "Whatever Ishu Wants" Pass</h4>
+                      <p class="text-[11px] text-pink-500 font-semibold claim-status">Dumbo obeys 1 wish! 🪄✨</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- UNLIMITED HUGS BUTTON (BURSTS HUGS EVERYWHERE) -->
+              <button onclick="redeemUnlimitedHugs(event)" class="w-full mt-2 py-3 bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500 hover:scale-[1.02] active:scale-95 text-white font-display text-base sm:text-lg rounded-2xl shadow-md transition-all flex items-center justify-center gap-2">
+                <span>Redeem Unlimited Hugs From Dumbo 🫂💖</span>
+              </button>
+            </div>
+          `;
+          break;
+      }
+    }
+
+    function handleTransition(nextStage) {
+      ensureAudioReady();
+      playTone(580, 0.1, 'sine');
+      renderStage(nextStage);
+    }
+
+    function dodgeAngryButton() {
+      const btnAngry = document.getElementById('btn-runaway');
+      const btnForgive = document.getElementById('btn-growing-forgive');
+      if (!btnAngry || !btnForgive) return;
+
+      playBoing();
+      runawayCount++;
+
+      const randomX = (Math.random() - 0.5) * 160;
+      const randomY = (Math.random() - 0.5) * 70;
+      const currentScale = Math.max(0.35, 1 - runawayCount * 0.15);
+
+      btnAngry.style.transform = `translate(${randomX}px, ${randomY}px) scale(${currentScale})`;
+      btnAngry.style.opacity = Math.max(0.25, 1 - runawayCount * 0.15);
+
+      const forgiveScale = 1 + (runawayCount * 0.15);
+      btnForgive.style.transform = `scale(${Math.min(forgiveScale, 1.35)})`;
+
+      if (runawayCount >= 4) {
+        btnAngry.style.display = 'none';
+        btnForgive.textContent = "Only Choice: Forgive Your Dumbo! 💖";
+      }
+    }
+
+    function triggerConfettiBurst() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 85,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#f472b6', '#ec4899', '#fb7185', '#38bdf8', '#fbbf24']
+        });
+        setTimeout(() => {
+          confetti({ particleCount: 45, angle: 60, spread: 50, origin: { x: 0 } });
+          confetti({ particleCount: 45, angle: 120, spread: 50, origin: { x: 1 } });
+        }, 220);
+      }
+    }
+
+    function claimCoupon(el, flyingEmojis, event) {
+      ensureAudioReady();
+      playTone(660, 0.15, 'triangle');
+      
+      // Burst flying emojis outward from the tapped card across the screen!
+      burstFlyingEmojis(flyingEmojis, event, 32);
+
+      el.classList.add('claimed');
+      const status = el.querySelector('.claim-status');
+      if (status) {
+        status.textContent = "REDEEMED! Valid Forever 💖";
+        status.classList.replace('text-pink-500', 'text-emerald-600');
+      }
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 25, spread: 45, origin: { y: 0.7 } });
+      }
+    }
+
+    function redeemUnlimitedHugs(event) {
+      ensureAudioReady();
+      playVictoryFanfare();
+      triggerConfettiBurst();
+
+      // Huge shower of hug & heart emojis flying across the screen
+      burstFlyingEmojis(['🫂', '🤗', '💖', '💕', '🧸', '🌸', '✨', '🥰', '🫂'], event, 45);
+
+      const badge = document.getElementById('stage-badge');
+      badge.textContent = "1,000,000 Hugs Sent from Dumbo to Ishu! 🫂✨";
+    }
+
+    /* Start audio & music immediately on the first touch or click */
+    window.addEventListener('DOMContentLoaded', () => {
+      initAmbientParticles();
+      renderStage(stages.INITIAL);
+      
+      const unlockAudio = () => {
+        ensureAudioReady();
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('touchstart', unlockAudio);
+      };
+
+      window.addEventListener('click', unlockAudio);
+      window.addEventListener('touchstart', unlockAudio);
+    });
+  </script>
+</body>
+</html>
